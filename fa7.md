@@ -1,6 +1,6 @@
 ---
-title: "FA7"
-author: "Mayo, Z"
+title: "Formative Assessmber #7"
+author: "BORROMEO, S, MAYO, Z, MERCADO, C, SINOCRUZ, A, TAGAYTAY, G"
 date: "2025-04-10"
 output:
   pdf_document: default
@@ -205,23 +205,15 @@ On average, a student arrives every **`r paste0(round(mean_wait, 2))` seconds **
 
 *Factor Affecting Queuing*
 
--   It was observed that the intervals between students arriving at the elevator were shorter at around 1:30 PM to 1:45 PM since it was the usual starting time of classes. This means that the queue was longer. As time passed by, the queue was shorter since students were likely to be in their classes already, meaning that fewer would have the need to use the elevator.
+-   It was observed that the intervals between arrivals of the FEU community, especially students arriving at the elevator were shorter at around 1:30 PM to 1:45 PM since it was the usual starting time of classes (Peak Periods). This means that the queue was longer. As time passed by, specifically after 1:45 PM (Off-Peak Periods), the intervals between student arrivals started to increase. This is because, as more professors and students proceeded to their respective classes, fewer students or professors required the use of the elevator, causing a larger interval between arrivals. As a result, the queue got thinner, and waiting times between students grew, as can be inferred from the data obtained.
 
 *Elevator Usage Efficiency:*
 
--   There’s only a 42% probability that a student arrives within 30
-    seconds.
-
--   Elevators that depart immediately may often move with only one
-    person inside, wasting energy and time.
+-   There is only a 42% chance that a student or professor arrives within 30 seconds and as the group observed there is a chance that elevators often leave with only one or two students resulting in a wastage of energy and time.
 
 *Queue Management:*
 
--   With an average student arrival time of 54.7 seconds, a line may
-    build up during busy hours.
-
--   This can help the school predict how long a group of students may
-    have to wait to board the elevator.
+-   With a mean student arrival time of *54.7 seconds*, a line can form during peak hours. This implies that during rush hours, such as at the beginning of classes, the intervals between student arrivals can be shorter, resulting in a more congested queue and possibly faster boarding times. Conversely, at off-peak times, when students are arriving in smaller numbers, waiting times between arrivals can become longer. The average waiting time of 54.7 seconds serves as a valuable benchmark for estimating how long a group of students will have to wait to enter the elevator. By knowing these trends, the school can better predict peak periods and schedule the elevator system appropriately, resulting in smoother operations and reduced wait times during peak periods.
 
 *Facility Optimization:*
 
@@ -274,8 +266,5 @@ ggplot(exp_data, aes(x = Time)) +
 
 ### **Interpretation** 
 
--   The PDF starts high and decays exponentially, representing the
-    density of events at each point in time.
-
--   The CDF starts at 0 and asymptotically approaches 1, representing
-    the cumulative probability that an event has occurred by time x.
+The graph shows the relationship between the Cumulative Distribution Function (CDF) and the Probability Density Function (PDF) of an exponential distribution. The CDF, in the orange dashed line, rises slowly and approaches 1 asymptotically, showing that as time goes by, the likelihood of the event increases. Conversely, the PDF, shown as the blue solid line, starts with a larger value and then decays exponentially, consistent with the fact that the chance of occurrence of the event decreases as time increases. This is an example or characteristic of exponential distributions, in which events have higher chances of occurrence earlier than later.
+    
