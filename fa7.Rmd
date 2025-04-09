@@ -1,7 +1,7 @@
 ---
 title: "FA7"
-author: "Mercado, C & Sinocruz, A"
-date: "2025-04-09"
+author: "Mayo, Z"
+date: "2025-04-10"
 output:
   pdf_document: default
   html_document: default
@@ -14,11 +14,11 @@ editor_options:
 
 ## 1. Identify a Practical Campus Problem
 
-For this assessment, the group identified time between students arriving
-at an elevator- a practical campus problem where events occur randomly
-over time.
+For this assessment, the group identified the time between students arriving to queue for an elevator in the Education Building inside the FEU Manila campus—a practical campus problem where events occur randomly over time.
 
 ## 2. Collect Data
+
+The data collection started at 1:40 PM and ended at 2:10 PM.
 
 The table below shows the time intervals between the arrival of each
 person. The time is standardized.
@@ -34,13 +34,13 @@ time_secs <- c(
   120, 40.91
 )
 
-waiting_times <- data.frame(
+arrival_times <- data.frame(
   Person = person,
-  Waiting_Time_Seconds = round(time_secs, 2)  
+  Arrival_Time_Seconds = round(time_secs, 2)  
 )
 
-kable(waiting_times, 
-      caption = "Waiting Time Between Student Arrivals at the Elevator (in Seconds)",
+kable(arrival_times, 
+      caption = "Time Between Student Arrivals at the Elevator Queue (in Seconds)",
       align = "c")  
 ```
 
@@ -48,23 +48,18 @@ kable(waiting_times,
 
 ### Instruction 1: Check if events occur randomly and independently over time.
 
-Because the group recorded interarrival times, this implies independence
-— since each record is a time interval not influenced by the last one.
-Since students come from various locations at random, this also
-indicates random occurrence.So, it's safe to assume events are
-independent and random over time. Therefore, we can apply the
-exponential distribution.
+Because the group recorded interarrival times, this implies independence—since each record is a time interval not influenced by the last one. Since students come from random locations with different purposes in queueing, this also indicates random occurrence. It's safe to assume the events are independent and random over time. Therefore, we can apply the exponential distribution.
 
 ### Instruction 2: Identify the average rate of event occurrence per unit of time.
 
 The formula for lambda is:
 
 $$
-\text{Lambda} = \frac{n}{\sum (\text{waiting times})}
+\text{Lambda} = \frac{n}{\sum (\text{arrival times})}
 $$
 
 Where $n$ is the number of events, and $\sum (\text{waiting times})$ is
-the sum of all the waiting times. Through manual calculation, we get:
+the sum of all the arrival times. Through manual calculation, we get:
 
 $$
 \text{Lambda} = \frac{30}{1,641.47}
@@ -82,7 +77,7 @@ For the exponential distribution, the mean (expected value $\mu$) is the
 reciprocal of the rate $\lambda$:
 
 $$
-\lambda = \frac{\text{Number of Observations}}{\text{Total Waiting Time}}
+\lambda = \frac{\text{Number of Observations}}{\text{Total Arrival Time}}
 $$ $$
 \mu = \frac{1}{\lambda}
 $$
@@ -100,8 +95,8 @@ total_time <- sum(time_secs)
 lambda <- n / total_time
 mean_time <- 1 / lambda
 
-cat("Mean waiting time:", round(mean_time, 3), "seconds\n")
 ```
+Mean arrival time: **`r paste0(round(mean_time, 3))` seconds**.
 
 ### Probability Density Function (PDF)
 
@@ -130,7 +125,9 @@ pdf_results <- data.frame(
 )
 
 library(knitr)
-kable(pdf_results, caption = "PDF Values for Each Data Point")
+kable(pdf_results, 
+      caption = "PDF Values for Each Data Point",
+      align = "c")
 
 ```
 
@@ -160,7 +157,7 @@ cdf_results <- data.frame(
 )
 
 library(knitr)
-kable(cdf_results, caption = "CDF Values for Each Data Point")
+kable(cdf_results, caption = "CDF Values for Each Data Point", align = "c")
 ```
 
 # 5. Interpret the Results
@@ -179,11 +176,10 @@ $$
 lambda <- 30 / sum(time_secs)
 time_30 <- 30
 prob_within_30 <- 1 - exp(-lambda * time_30)
-cat("Probability a student arrives within 30 seconds:", round(prob_within_30 * 100, 2), "%\n")
 ```
+Probability a student arrives within 30 seconds: **`r paste0(round(prob_within_30 * 100, 2), "%")` **
 
-
-**b. Probability of waiting more than 60 seconds:** 
+**b. Probability of student arriving more than 60 seconds:** 
 $$
 P(X > x) = e^{-\lambda x}
 $$
@@ -191,22 +187,25 @@ $$
 ```{r}
 time_60 <- 60
 prob_more_than_60 <- exp(-lambda * time_60)
-cat("Probability of waiting more than 60 seconds:", round(prob_more_than_60 * 100, 2), "%\n")
 ```
+Probability of student arriving more than 60 seconds: **`r paste0(round(prob_more_than_60 * 100, 2), "%")` **
 
 ### Implications
 
-**a. Expected Waiting Time:** Based on the data, the mean waiting time
-between student arrivals is approximately:
+**a. Expected Arrival Time:** Based on the data, the mean waiting time
+between student arrivals is approximately: 
 
 ```{r}
 mean_wait <- 1 / lambda
-cat("Expected (mean) waiting time:", round(mean_wait, 2), "seconds\n")
 ```
 
-On average, a student arrives every 54.7 seconds.
+On average, a student arrives every **`r paste0(round(mean_wait, 2))` seconds **.
 
 **b. Real-World Implications on Campus**
+
+*Factor Affecting Queuing*
+
+-   It was observed that the intervals between students arriving at the elevator were shorter at around 1:30 PM to 1:45 PM since it was the usual starting time of classes. This means that the queue was longer. As time passed by, the queue was shorter since students were likely to be in their classes already, meaning that fewer would have the need to use the elevator.
 
 *Elevator Usage Efficiency:*
 
@@ -262,8 +261,8 @@ exp_data <- data.frame(
 
 # Plot
 ggplot(exp_data, aes(x = Time)) +
-  geom_line(aes(y = PDF, color = "PDF"), size = 1.2) +
-  geom_line(aes(y = CDF, color = "CDF"), size = 1.2, linetype = "dashed") +
+  geom_line(aes(y = PDF, color = "PDF"), linewidth = 1.2) +
+  geom_line(aes(y = CDF, color = "CDF"), linewidth = 1.2, linetype = "dashed") +
   labs(title = "Exponential Distribution: PDF vs. CDF",
        x = "Time (seconds)",
        y = "Value",
