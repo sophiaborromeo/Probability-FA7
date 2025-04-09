@@ -1,6 +1,6 @@
 ---
 title: "Formative Assessmber #7"
-author: "BORROMEO, S, MAYO, Z, MERCADO, C, SINOCRUZ, A, TAGAYTAY, G"
+author: "BORROMEO, S, MAYO, Z, MERCADO, C, SINOCRUZ, A, & TAGAYTAY, G"
 date: "2025-04-10"
 output:
   pdf_document: default
