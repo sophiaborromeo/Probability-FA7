@@ -1,0 +1,156 @@
+---
+title: "FA7 1-4"
+author: "Elisha Sophia Borromeo"
+date: "2025-04-09"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+Github Link:
+
+# **Campus-Related Issues Using Exponential Distribution **
+
+## 1. Identify a Practical Campus Problem
+
+For this assessment, the group identified time between students arriving at an elevator- a practical campus problem where events occur randomly over time.
+
+## 2. Collect Data
+
+The table below shows the time intervals between the arrival of each person. The time is standardized. 
+
+```{r, echo=FALSE} 
+library(knitr)
+
+person <- 1:30
+time_secs <- c(
+  62, 45, 22.78, 2, 104.2, 43, 104.2, 115.34, 91.63, 29.25,
+  36.01, 7.36, 13.82, 61.91, 11.75, 2.81, 15.46, 75.10, 85.47,
+  10.99, 13.6, 131.94, 41.26, 28.84, 46.69, 21.80, 53.86, 202.49,
+  120, 40.91
+)
+
+waiting_times <- data.frame(
+  Person = person,
+  Waiting_Time_Seconds = round(time_secs, 2)  
+)
+
+kable(waiting_times, 
+      caption = "Waiting Time Between Student Arrivals at the Elevator (in Seconds)",
+      align = "c")  
+```
+
+## 3. Verify if Exponential Distribution is Applicable
+
+### Instruction 1: Check if events occur randomly and independently over time.
+
+Because the group recorded interarrival times, this implies independence — since each record is a time interval not influenced by the last one. Since students come from various locations at random, this also indicates random occurrence.So, it's safe to assume events are independent and random over time. Therefore, we can apply the exponential distribution.
+
+### Instruction 2: Identify the average rate of event occurrence per unit of time.
+
+
+The formula for lambda is:
+
+\[
+\text{Lambda} = \frac{n}{\sum (\text{waiting times})}
+\]
+
+Where \(n\) is the number of events, and \(\sum (\text{waiting times})\) is the sum of all the waiting times. Through manual calculation, we get: 
+
+\[
+\text{Lambda} = \frac{30}{1,641.47}
+\]
+\[
+\text{Lambda} = {0.0182763}
+\]
+
+For number 4, we will be calculating lambda using a statistical tool.
+
+## 4. Compute Key Parameters
+
+### Mean (Expected Value)
+
+For the exponential distribution, the mean (expected value \( \mu \)) is the reciprocal of the rate \( \lambda \):
+
+\[
+\lambda = \frac{\text{Number of Observations}}{\text{Total Waiting Time}}
+\]
+\[
+\mu = \frac{1}{\lambda}
+\]
+
+```{r, echo=FALSE} 
+time_secs <- c(
+  62, 45, 22.78, 2, 104.2, 43, 104.2, 115.34, 91.63, 29.25,
+  36.01, 7.36, 13.82, 61.91, 11.75, 2.81, 15.46, 75.10, 85.47,
+  10.99, 13.6, 131.94, 41.26, 28.84, 46.69, 21.80, 53.86, 202.49,
+  120, 40.91
+)
+
+n <- length(time_secs)
+total_time <- sum(time_secs)
+lambda <- n / total_time
+mean_time <- 1 / lambda
+
+cat("Mean waiting time:", round(mean_time, 3), "seconds\n")
+```
+
+### Probability Density Function (PDF)
+
+\[
+f(x) = \lambda e^{-\lambda x}, \quad \text{for } x \geq 0
+\]
+
+```{r, echo=FALSE} 
+time_secs <- c(
+  62, 45, 22.78, 2, 104.2, 43, 104.2, 115.34, 91.63, 29.25,
+  36.01, 7.36, 13.82, 61.91, 11.75, 2.81, 15.46, 75.10, 85.47,
+  10.99, 13.6, 131.94, 41.26, 28.84, 46.69, 21.80, 53.86, 202.49,
+  120, 40.91
+)
+
+n <- length(time_secs)
+total_time <- sum(time_secs)
+lambda <- n / total_time
+
+pdf_vals <- lambda * exp(-lambda * time_secs)
+
+
+pdf_results <- data.frame(
+  Time_Seconds = round(time_secs, 2),
+  PDF = round(pdf_vals, 5)
+)
+
+library(knitr)
+kable(pdf_results, caption = "PDF Values for Each Data Point")
+
+```
+
+### Cumulative Distribution Function (CDF)
+
+\[
+F(x) = 1 - e^{-\lambda x}, \quad \text{for } x \geq 0
+\]
+
+```{r, echo=FALSE} 
+time_secs <- c(
+  62, 45, 22.78, 2, 104.2, 43, 104.2, 115.34, 91.63, 29.25,
+  36.01, 7.36, 13.82, 61.91, 11.75, 2.81, 15.46, 75.10, 85.47,
+  10.99, 13.6, 131.94, 41.26, 28.84, 46.69, 21.80, 53.86, 202.49,
+  120, 40.91
+)
+
+n <- length(time_secs)
+total_time <- sum(time_secs)
+lambda <- n / total_time
+
+cdf_vals <- 1 - exp(-lambda * time_secs)
+
+cdf_results <- data.frame(
+  Time_Seconds = round(time_secs, 2),
+  CDF = round(cdf_vals, 5)
+)
+
+library(knitr)
+kable(cdf_results, caption = "CDF Values for Each Data Point")
+```
