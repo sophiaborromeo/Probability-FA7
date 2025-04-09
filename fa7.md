@@ -1,14 +1,8 @@
----
+
 title: "Formative Assessmber #7"
 author: "BORROMEO, S, MAYO, Z, MERCADO, C, SINOCRUZ, A, & TAGAYTAY, G"
 date: "2025-04-10"
-output:
-  pdf_document: default
-  html_document: default
-editor_options:
-  markdown:
-    wrap: 72
----
+
 
 # **Campus-Related Issues Using Exponential Distribution**
 
