@@ -1,7 +1,21 @@
 
-title: "Formative Assessmber #7"
-author: "BORROMEO, S, MAYO, Z, MERCADO, C, SINOCRUZ, A, & TAGAYTAY, G"
-date: "2025-04-10"
+# Formative Assessmber #7
+
+Authors:
+
+Borromeo, Elisha
+
+Mayo, Zyann
+
+Mercado, Consuelo
+
+Sinocruz, Arvie
+
+Tagaytay, Gabriel
+
+Date: 2025-04-10
+
+---
 
 
 # **Campus-Related Issues Using Exponential Distribution**
