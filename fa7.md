@@ -213,7 +213,7 @@ On average, a student arrives every **`r paste0(round(mean_wait, 2))` seconds **
 
 *Factor Affecting Queuing*
 
--   It was observed that the intervals between arrivals of the FEU community, especially students arriving at the elevator were shorter at around 1:30 PM to 1:45 PM since it was the usual starting time of classes (Peak Periods). This means that the queue was longer. As time passed by, specifically after 1:45 PM (Off-Peak Periods), the intervals between student arrivals started to increase. This is because, as more professors and students proceeded to their respective classes, fewer students or professors required the use of the elevator, causing a larger interval between arrivals. As a result, the queue got thinner, and waiting times between students grew, as can be inferred from the data obtained.
+-   It was observed that the intervals between arrivals of the FEU community, especially students arriving at the elevator in Education Building were shorter at around 1:30 PM to 1:45 PM since it was the usual starting time of classes (Peak Periods). This means that the queue was longer. As time passed by, specifically after 1:45 PM (Off-Peak Periods), the intervals between student arrivals started to increase. This is because, as more professors and students proceeded to their respective classes, fewer students or professors required the use of the elevator, causing a larger interval between arrivals. As a result, the queue got thinner, and waiting times between students grew, as can be inferred from the data obtained.
 
 *Elevator Usage Efficiency:*
 
