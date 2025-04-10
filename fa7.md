@@ -1,5 +1,5 @@
 
-# Formative Assessmber #7
+# Formative Assessment #7
 
 Authors:
 
@@ -14,6 +14,9 @@ Sinocruz, Arvie
 Tagaytay, Gabriel
 
 Date: 2025-04-10
+
+### GitHub Link:  
+<https://github.com/sophiaborromeo/Probability-FA7/edit/main/fa7.md>
 
 ---
 
@@ -225,17 +228,13 @@ On average, a student arrives every **`r paste0(round(mean_wait, 2))` seconds **
 
 *Facility Optimization:*
 
--   Elevator scheduling or idle-time automation could be improved using
-    real-time arrival predictions.
+-   Elevator automation or idle-time scheduling can be optimized through the use of real-time arrival predictions. Using real-time data, elevators can be set to work more efficiently—moving more in peak hours   and idling in non-peak hours. This reduces waste trips and maximizes flow.
 
--   Digital displays showing estimated wait times could enhance the
-    student experience.
+-   Digital displays showing estimated wait times could enhance the student experience. Wait time displays can help students manage their expectations, reduce frustration, and decide whether to wait or take the stairs, especially during busy periods.
 
 *Energy Efficiency:*
 
--   Since there is a 33% chance of waiting more than 60 seconds, the
-    elevator could delay activation unless more people arrive,
-    optimizing both energy and time.
+-   Since there is a 33% chance of waiting more than 60 seconds, the elevator could delay activation unless more people arrive, optimizing both energy and time. With fewer arrivals during off-peak times, elevators can delay trips until more passengers are present, cutting down on energy use and unnecessary movements.
 
 ## Visualization:
 
